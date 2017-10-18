@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 const merge = require('webpack-merge')
 const webpackBaseConfig = require('./webpack.base.config.js')
 const config = require('./src/config')
@@ -32,7 +33,11 @@ module.exports = merge(webpackBaseConfig, {
       template: './src/template/index.ejs',
       inject: false
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([{
+      from: path.join(__dirname, 'libs/layui'),
+      to: 'layui/'
+    }])
   ],
   devServer: {
     contentBase: './dist',
