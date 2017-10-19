@@ -1,5 +1,6 @@
 import axios from 'axios'
 import authUtil from 'utils/authUtil'
+import commonUtil from 'utils/commonUtil'
 
 // 创建axios实例
 const service = axios.create({
@@ -9,23 +10,25 @@ const service = axios.create({
 
 // request拦截器
 service.interceptors.request.use(config => {
+  commonUtil.openLoading()
   // Do something before request is sent
   if (authUtil.getToken()) {
     config.headers['Authorization'] =  'Bearer ' + authUtil.getToken()
   }
   return config
 }, error => {
-  // Do something with request error
-  iView.Message.error(error)
+  commonUtil.closeLoading()
   Promise.reject(error)
 })
 
 // respone拦截器
 service.interceptors.response.use(
-  response => response.data,
-
+  response => {
+    commonUtil.closeLoading()
+    return response.data
+  },
   error => {
-
+    commonUtil.closeLoading()
     return Promise.reject(error)
   }
 )

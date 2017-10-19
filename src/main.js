@@ -1,18 +1,20 @@
-import _ from 'lodash'
 import '@/css/style.css'
 import routerService from '@/service/routerService'
+import commonUtil from 'utils/commonUtil'
 import authApi from 'api/authApi'
-
+import 'components/common/common-header'
 const root = avalon.define({
   $id: 'root',
-  /* 当前页面 */
   currPage: '',
-  /* 当前vm的id */
-  curId: '',
+  userInfo:{},
   /* 初始化 */
   init: async function() {
-    const res = await authApi.login('test', 'test')
-    console.log(res)
+    //获取用户信息
+    const res = await authApi.getUserInfo()
+    Object.keys(res.values.userInfo).forEach(function(key){
+      if(!res.values.userInfo[key]) delete res.values.userInfo[key]
+    })
+    root.userInfo = res.values.userInfo
     const rootVm = root
     const defaultIndex = '/index'
     routerService.initRouter({rootVm, defaultIndex})
@@ -21,6 +23,8 @@ const root = avalon.define({
 
 /* 初始化执行 */
 avalon.ready(function () {
-  root.init()
-  avalon.scan(document.body)
+  layui.use(['layer','element'], function(){
+    root.init()
+    avalon.scan(document.body)
+  })
 })

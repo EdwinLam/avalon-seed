@@ -31,13 +31,15 @@ module.exports = merge(webpackBaseConfig, {
       favicon: path.join(__dirname, 'qky2.ico'),
       filename: './index.html',
       template: './src/template/index.ejs',
+      chunks: ['vendors', 'main','main.css'],
       inject: false
     }),
     new HtmlWebpackPlugin({
       favicon: path.join(__dirname, 'qky2.ico'),
       filename: './login.html',
       template: './src/template/login.ejs',
-      inject: false
+      inject: false,
+      chunks: ['vendors', 'login','login.css'],
     }),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{
