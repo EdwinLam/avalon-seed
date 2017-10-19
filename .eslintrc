@@ -10,6 +10,7 @@
   },
   "extends": "standard",
   "globals": {
+    "avalon": true,
     "process.env": true,
     "import":true
   }

@@ -1,1 +1,3 @@
-import avalon from 'avalon2'
+import "babel-polyfill"
+import 'avalon2'
+import 'libs/avalon/mmRouter'

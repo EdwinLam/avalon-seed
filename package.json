@@ -4,6 +4,8 @@
   "description": "基础启动项目",
   "main": "",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "js-cookie": "^2.1.4"
   },
   "devDependencies": {
     "avalon2": "^2.2.7",
@@ -18,12 +20,13 @@
     "es5-shim": "^4.5.9",
     "es6-promise": "^4.1.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "lodash": "^4.17.4",
     "postcss-loader": "^2.0.8",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
-    "file-loader": "^1.1.5",
     "webpack": "^3.7.1",
     "webpack-dev-server": "^2.9.2",
     "webpack-merge": "^4.1.0"
@@ -37,7 +40,7 @@
   "config": {
     "devHost": "localhost",
     "devPort": 3344,
-    "devApi": "http://localhost:8080",
+    "devApi": "http://localhost:3000",
     "devPic": ""
   }
 }

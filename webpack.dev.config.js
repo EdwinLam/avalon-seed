@@ -33,6 +33,12 @@ module.exports = merge(webpackBaseConfig, {
       template: './src/template/index.ejs',
       inject: false
     }),
+    new HtmlWebpackPlugin({
+      favicon: path.join(__dirname, 'qky2.ico'),
+      filename: './login.html',
+      template: './src/template/login.ejs',
+      inject: false
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([{
       from: path.join(__dirname, 'libs/layui'),
@@ -41,17 +47,16 @@ module.exports = merge(webpackBaseConfig, {
   ],
   devServer: {
     contentBase: './dist',
-    open: true,
     historyApiFallback: true,
+    open:true,
     hot: true,
     inline: true,
     compress: true,
-    stats: 'errors-only',
     host: pkg.config.devHost,
     port: pkg.config.devPort,
     proxy: {
       '/**/**': {
-        target: config.devApi,
+        target: pkg.config.devApi,
         changeOrigin: true
       }
     }

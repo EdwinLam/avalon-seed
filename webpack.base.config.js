@@ -4,7 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
   entry: {
     main: './src/main',
-    vendors: './src/vendors'
+    vendors: './src/vendors',
+    login:'./src/login'
   },
   output: {
     path: path.join(__dirname, 'dist')
@@ -48,7 +49,8 @@ module.exports = {
       '@': path.resolve(__dirname, './src'),
       'components': path.resolve(__dirname, './src/components'),
       'libs': path.resolve(__dirname, './libs'),
-      'api': path.resolve(__dirname, './src/api')
+      'api': path.resolve(__dirname, './src/api'),
+      'utils': path.resolve(__dirname, './src/utils')
     }
   }
 }
