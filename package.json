@@ -4,16 +4,16 @@
   "description": "基础启动项目",
   "main": "",
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "js-cookie": "^2.1.4"
+
   },
   "devDependencies": {
+    "js-cookie": "^2.1.4",
     "avalon2": "^2.2.7",
     "axios": "^0.16.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
-    "bootstrap": "^3.2.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.1.1",
     "css-loader": "^0.28.7",
